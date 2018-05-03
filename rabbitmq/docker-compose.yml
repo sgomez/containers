@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    rabbitmq:
+        image: rabbitmq:${VERSION}
+        hostname: ${HOSTNAME}
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - "127.0.0.1:15672:15672"
+        environment:
+            - RABBITMQ_DEFAULT_USER
+            - RABBITMQ_DEFAULT_PASS
+        volumes:
+            - data:/var/lib/rabbitmq
+
+volumes:
+    data:
+        driver: local
