@@ -2,7 +2,7 @@ version: '2'
 
 services:
   docker-runner:
-    image:  gitlab/gitlab-runner:latest
+    image:  gitlab/gitlab-runner:${VERSION}
     container_name: gitlab-runner
     restart: always
     volumes:
