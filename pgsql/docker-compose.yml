@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    pgsql:
+        restart: always
+        image: postgres:${VERSION}
+        container_name: ${COMPOSE_PROJECT_NAME}
+        volumes:
+            - data:/var/lib/postgresql/data
+        ports:
+            - 0.0.0.0:5432:5432
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_DB=root
+            - POSTGRES_PASSWORD
+
+volumes:
+    data:
+        driver: local
