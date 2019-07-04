@@ -1,2 +1,3 @@
 certs/*
 !certs/.gitignore
+traefik.toml
