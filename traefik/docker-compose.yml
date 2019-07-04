@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik 
+    restart: always
+    command: --docker
+    container_name: traefik
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./certs:/etc/ssl/certs
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock 
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+

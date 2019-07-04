@@ -1,0 +1,23 @@
+debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+    [[entryPoints.https.tls.certificates]]
+    certFile = "/etc/ssl/certs/your-domain.crt"
+    keyFile = "/etc/ssl/certs/your-domain.key"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "your-domain"
+watch = true
+exposedByDefault = false
+
